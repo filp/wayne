@@ -1,4 +1,4 @@
-<img align="left" src="http://i.imgur.com/ioms1mc.png" height="300px">
+<img align="right" src="http://i.imgur.com/ioms1mc.png" height="300px">
 
 # wayne
 [Laravel4](http://four.laravel.com) debug toolbar
