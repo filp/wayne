@@ -22,7 +22,7 @@ class WayneServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['wayne'] = $this->share(function() {
+        $this->app['wayne'] = $this->app->share(function() {
             return 'baloney';
         });
     }
