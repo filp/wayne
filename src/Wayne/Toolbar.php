@@ -24,14 +24,6 @@ class Toolbar
     }
 
     /**
-     * 
-     */
-    public function hi()
-    {
-        return "Hello!";
-    }
-
-    /**
      * @param Symfony\Component\HttpFoundation\Response $response
      */
     public function attachToResponseBody(Response $response)
