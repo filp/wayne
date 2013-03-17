@@ -1,0 +1,16 @@
+{
+    "name": "filp/wayne",
+    "keywords": ["laravel", "debug", "toolbar", "laravel4", "laravel4-provider"],
+    "authors": [
+        {
+            "name": "Filipe Dobreira",
+            "homepage": "https://github.com/filp",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Wayne": "src/"
+        }
+    }
+}
