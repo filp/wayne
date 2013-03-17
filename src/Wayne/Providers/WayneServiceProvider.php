@@ -33,9 +33,8 @@ class WayneServiceProvider extends ServiceProvider
             return null;
         }
 
-        $wayne = new Toolbar($app);
-        $app['wayne'] = $app->share(function() use($wayne) {
-            return $wayne;
+        $app['wayne'] = $app->share(function() use($app) {
+            return new Toolbar($app);
         });
 
         // Attach the Wayne toolbar to the request, just before
