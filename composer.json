@@ -8,6 +8,11 @@
             "role": "Developer"
         }
     ],
+    "require": {
+        "illuminate/support": "4.0.x",
+        "illuminate/routing": "4.0.x"
+    },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "Wayne": "src/"
