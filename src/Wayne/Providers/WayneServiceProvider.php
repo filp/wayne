@@ -22,7 +22,15 @@ class WayneServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['wayne'] = $this->app->share(function() {
+        $app = $this->app;
+
+        // Bail out if we're in production, testing, or not in a web context.
+        // @todo: Is this reliable enough?
+        if($app->environment() == 'production' || $app->runningInConsole() || $app->runningUnitTests()) {
+            return null;
+        }
+        
+        $app['wayne'] = $app->share(function() {
             return 'baloney';
         });
     }
