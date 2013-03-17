@@ -33,6 +33,9 @@ class WayneServiceProvider extends ServiceProvider
             return null;
         }
 
+        // Add Wayne's view directory to the list of search paths.
+        $app['view.finder']->addNamespace('wayne', __DIR__ . '/../views');
+
         $app['wayne'] = $app->share(function() use($app) {
             return new Toolbar($app);
         });

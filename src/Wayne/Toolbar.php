@@ -30,7 +30,7 @@ class Toolbar
      */
     protected function render()
     {
-        return "not yet";
+        return $this->app['view']->make('wayne::toolbar');
     }
 
     /**
