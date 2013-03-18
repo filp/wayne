@@ -93,6 +93,7 @@ class CompositeWidgetBuilder
     public function id($id)
     {
         $this->meta['id'] = (string) $id;
+        return $this;
     }
 
     /**
@@ -104,5 +105,32 @@ class CompositeWidgetBuilder
     public function description($description)
     {
         $this->meta['description'] = (string) $description;
+        return $this;
+    }
+
+    /**
+     * Attaches extra css to outer container of this widget,
+     * allowing quick customizations without the trouble of
+     * using a whole new template.
+     *
+     * Argument may be a string, or array of strings
+     * 
+     * @api
+     * @example Wayne::css('color: red; font-weight: bold')
+     * @example Wayne::css(array(
+     *    'color: red',
+     *    'font-weight: bold'
+     * ));
+     * @param  string|array $css
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuilder
+     */
+    public function css($css)
+    {
+        if(is_array($css)) {
+            $css = join(";", $css);
+        }
+
+        $this->meta['style'] = (string) $css;
+        return $this;
     }
 }
