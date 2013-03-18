@@ -5,6 +5,7 @@
  * @author Filipe Dobreira <http://github.com/filp>
  */
 
+use Wayne\WidgetBuilder\CompositeWidgetBuilder;
 use Illuminate\Foundation\Application;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,11 +17,43 @@ class Toolbar
     protected $app;
 
     /**
+     * All the widgets for this toolbar
+     * @var array
+     */
+    protected $widgets = array();
+
+    /**
      * @param Illuminate\Foundation\Application $app
      */
     public function __construct(Application $app)
     {
         $this->app = $app;
+    }
+
+    /**
+     * @api
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuilder
+     *         - OR maybe not, an interface might be in order.
+     */
+    public function widget()
+    {
+        return $this->app['wayne.widget_builder']($this);
+    }
+
+    /**
+     * Attaches a widget to this toolbar. Will mostly be called
+     * by the WidgetBuilder to attach a complete widget, but
+     * may also be accessed directly when working with more complex
+     * widget constructions.
+     *
+     * @api
+     * @param  CompositeWidgetBuilder $widget
+     * @return Wayne\Toolbar
+     */
+    public function attach($widget)
+    {
+        $this->widgets[] = $widget;
+        return $this;
     }
 
     /**

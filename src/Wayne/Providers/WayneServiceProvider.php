@@ -6,6 +6,7 @@
  */
 
 use Wayne\Toolbar;
+use Wayne\WidgetBuilder\CompositeWidgetBuilder;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,6 +37,10 @@ class WayneServiceProvider extends ServiceProvider
         // Add Wayne's view directory to the list of search paths.
         $app['view.finder']->addNamespace('wayne', __DIR__ . '/../views');
 
+        $app['wayne.widget_builder'] = function($parentToolbar) {
+            return new CompositeWidgetBuilder($parentToolbar);
+        };
+
         $app['wayne'] = $app->share(function() use($app) {
             return new Toolbar($app);
         });
@@ -60,6 +65,6 @@ class WayneServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('wayne');
+        return array('wayne', 'wayne.widget_builder');
     }
 }
