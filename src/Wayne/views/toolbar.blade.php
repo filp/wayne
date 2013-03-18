@@ -4,8 +4,8 @@
      please file an issue report @ https://github.com/filp/wayne -->
   @include('wayne::style')
   <div class="wayne-toolbar">
-    <div class="widget-logo widget-static">
-      
+    <div class="wayne-logo wayne-widget">
+      <a href="https://github.com/filp/wayne" class="wayne-branding">wayne</a>
     </div>
   </div>
 </div>
