@@ -1,6 +1,6 @@
 <img align="right" src="http://i.imgur.com/ioms1mc.png" height="300px">
 
-# wayne
+# wayne [![Build Status](https://travis-ci.org/filp/wayne.png?branch=master)](https://travis-ci.org/filp/wayne)
 [Laravel4](http://four.laravel.com) debug toolbar
 
 *More info coming eventually*
