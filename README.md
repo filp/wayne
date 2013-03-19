@@ -16,13 +16,16 @@ through a simple yet flexible system of toolbar widgets, built through a fluent 
 
 *Note: this is an implementation proposal, the final product may be very very different.*
 
-## Building a widget using the `Wayne` facade and the fluent interface
+## Examples
 
+*More examples coming soon*
+
+### Building a widget using the `Wayne` facade and the fluent interface
+<img src="http://i.imgur.com/iUFValC.png" align="middle">
 ```php
 Wayne::widget()
-  ->title('Current Date')
-  ->description('Shows the current date')
-  ->icon(URL::asset('calendar.png'))
-  ->text('Today is monday')
+  ->title('Status code')
+  ->button('500' /* label */, null /* button link */, '#A91818' /* background color */)
+  ->text('Internal Server Error')
 ->attach();
 ```
