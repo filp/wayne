@@ -61,6 +61,7 @@ class CompositeWidgetBuilder
 
     /**
      * Retrieves a value, by key, from this widget's contents.
+     * @api
      * @param  string $key
      * @param  mixed  $default
      * @return mixed
@@ -77,6 +78,7 @@ class CompositeWidgetBuilder
     /**
      * Returns true if this widget contains a part, identified
      * by its key.
+     * @api
      * @param  string $key
      * @return bool
      */
@@ -85,6 +87,19 @@ class CompositeWidgetBuilder
         return !empty($this->parts[$key]);
     }
 
+    /**
+     * Idiomatic alias to CompositeWidgetBuilder::hasPart that
+     * also verifies thrutyness
+     * @api
+     * @example $widget->is('important')
+     * @param  string $key
+     * @return bool
+     */
+    public function is($key)
+    {
+        return $this->hasPart($key) && $this->part($key);
+    }
+    
     /**
      * Attaches this widget to the $parentToolbar instance
      * @api
