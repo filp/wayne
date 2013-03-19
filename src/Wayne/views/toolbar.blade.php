@@ -5,10 +5,10 @@
   @include('wayne::style')
   <div class="wayne-toolbar">
     <div class="wayne-logo wayne-widget">
-      <a href="https://github.com/filp/wayne" class="wayne-branding">wayne</a>
+      <a href="https://github.com/filp/wayne" class="wayne-branding wayne-widget-body" target="_blank">wayne</a>
     </div>
     @foreach($widgets as $widget)
-      {{$widget->render()}}
+      {{ $widget->render() }}
     @endforeach
   </div>
 

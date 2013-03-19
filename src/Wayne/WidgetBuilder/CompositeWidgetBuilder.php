@@ -24,7 +24,8 @@ class CompositeWidgetBuilder
      * @var array
      */
     protected $parts = array(
-        'template' => 'wayne::widget.composite'
+        'template' => 'wayne::widget.composite',
+        'buttons'  => array()
     );
 
     /**
@@ -112,7 +113,7 @@ class CompositeWidgetBuilder
      */
     public function template($template)
     {
-        $this->parts['template'] = (string) $template;
+        $this->parts['template'] = $template;
         return $this;
     }
 
@@ -127,7 +128,7 @@ class CompositeWidgetBuilder
      */
     public function html($html)
     {
-        $this->parts['html'] = (string) $html;
+        $this->parts['html'] = $html;
         return $this;
     }
     
@@ -142,7 +143,7 @@ class CompositeWidgetBuilder
      */
     public function title($title)
     {
-        $this->parts['title'] = (string) $title;
+        $this->parts['title'] = $title;
         return $this;
     }
 
@@ -158,7 +159,7 @@ class CompositeWidgetBuilder
      */
     public function id($id)
     {
-        $this->parts['id'] = (string) $id;
+        $this->parts['id'] = $id;
         return $this;
     }
 
@@ -170,7 +171,43 @@ class CompositeWidgetBuilder
      */
     public function description($description)
     {
-        $this->parts['description'] = (string) $description;
+        $this->parts['description'] = $description;
+        return $this;
+    }
+
+    /**
+     * Adds a button to the widget. A widget may have
+     * multiple buttons, which will be displayed in order,
+     * side-to-side (by default)
+     *
+     * @api
+     * @param  string $label 
+     * @param  string $link  
+     * @param  string $color   A CSS color for the button
+     * @param  string $target  i.e: _self, _blank
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuilder
+     */
+    public function button($label, $link = '', $color = null, $target = '_self')
+    {
+        $this->parts['buttons'][] = (object) array(
+            'label'  => $label,
+            'href'   => $link,
+            'color'  => $color,
+            'target' => $target
+        );
+
+        return $this;
+    }
+
+    /**
+     * Sets the plain-text content for this widget.
+     * @api
+     * @param string $text
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuil
+     */
+    public function text($text)
+    {
+        $this->parts['text'] = $text;
         return $this;
     }
 
@@ -196,7 +233,7 @@ class CompositeWidgetBuilder
             $css = join(";", $css);
         }
 
-        $this->parts['style'] = (string) $css;
+        $this->parts['style'] = $css;
         return $this;
     }
 }
