@@ -1,6 +1,6 @@
 <style>
 .wayne-toolbar-outer {
-  font: 14px helvetica, arial, sans-serif;
+  font: 12px helvetica, arial, sans-serif;
   
   position: absolute;
   bottom: 0;
@@ -30,11 +30,13 @@
 .wayne-widget {
   height: 52px;
   float: left;
-  display: block;
+  color: #E1E1E1;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
 }
 
 .wayne-branding {
   padding: 18px 10px;
+  display: block;
   
   font-size: 14px;
   font-weight: bold;

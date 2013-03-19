@@ -19,11 +19,11 @@ class CompositeWidgetBuilder
     protected $parentToolbar;
 
     /**
-     * Widget meta-data, that may or may not be displayed
-     * in the actual toolbar.
+     * Widget parts, includes both visible components, and
+     * meta-data.
      * @var array
      */
-    protected $meta = array();
+    protected $parts = array();
 
     /**
      * If no Toolbar instance is provided at time of creation,
@@ -50,14 +50,26 @@ class CompositeWidgetBuilder
     }
 
     /**
-     * Retrieves a value, by key, from this widget's meta-data
-     * array. $default if the key does not exist, or is empty.
+     * Retrieves a value, by key, from this widget's contents.
      * @param  string $key
-     * @return mixed
+     * @return mixed|null Null if doesn't exist
      */
-    public function meta($key, $default = null)
+    public function part($key)
     {
-        return !empty($this->meta[$key]) ? $this->meta[$key] : $default;
+        if($this->hasPart($key)) {
+            return $this->parts[$key];
+        }
+    }
+
+    /**
+     * Returns true if this widget contains a part, identified
+     * by its key.
+     * @param  string $key
+     * @return bool
+     */
+    public function hasPart($key)
+    {
+        return !empty($this->parts[$key]);
     }
 
     /**
@@ -88,7 +100,7 @@ class CompositeWidgetBuilder
      */
     public function title($title)
     {
-        $this->meta['title'] = (string) $title;
+        $this->parts['title'] = (string) $title;
         return $this;
     }
     
@@ -104,7 +116,7 @@ class CompositeWidgetBuilder
      */
     public function id($id)
     {
-        $this->meta['id'] = (string) $id;
+        $this->parts['id'] = (string) $id;
         return $this;
     }
 
@@ -116,7 +128,7 @@ class CompositeWidgetBuilder
      */
     public function description($description)
     {
-        $this->meta['description'] = (string) $description;
+        $this->parts['description'] = (string) $description;
         return $this;
     }
 
@@ -142,7 +154,7 @@ class CompositeWidgetBuilder
             $css = join(";", $css);
         }
 
-        $this->meta['style'] = (string) $css;
+        $this->parts['style'] = (string) $css;
         return $this;
     }
 }
