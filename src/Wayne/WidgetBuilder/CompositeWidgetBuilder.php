@@ -23,7 +23,9 @@ class CompositeWidgetBuilder
      * meta-data.
      * @var array
      */
-    protected $parts = array();
+    protected $parts = array(
+        'template' => 'wayne::widget.composite'
+    );
 
     /**
      * If no Toolbar instance is provided at time of creation,
@@ -43,10 +45,17 @@ class CompositeWidgetBuilder
      */
     public function render()
     {
-        $app = $this->parentToolbar->getApp();
-        return $app['view']->make('wayne::widget.composite', array(
-            'widget' => $this
-        ));
+        // If there's raw html for this widget, return it right away,
+        // ignoring all other properties of this Widget, otherwise,
+        // render the template part with the existing widget data.
+        if($this->hasPart('html')) {
+            return $this->part('html');
+        } else {
+            $app = $this->parentToolbar->getApp();
+            return $app['view']->make($this->part('template'), array(
+                'widget' => $this
+            ));
+        }
     }
 
     /**
@@ -90,6 +99,36 @@ class CompositeWidgetBuilder
     }
 
     /**
+     * Sets the template for this widget. Must be a valid Path
+     * accepted by the View\Environment, i.e: wayne::widget.composite
+     * This template will receive a $widget property, for the instance
+     * being rendered.
+     * @api
+     * @param string $template
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuilder
+     */
+    public function template($template)
+    {
+        $this->parts['template'] = (string) $template;
+        return $this;
+    }
+
+    /**
+     * Sets raw HTML content for this widget. Setting this
+     * part will effectively all(or most) other properties
+     * of the widget to be ignored, as there's no template
+     * to render.
+     * @api
+     * @param  string $html
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuilder
+     */
+    public function html($html)
+    {
+        $this->parts['html'] = (string) $html;
+        return $this;
+    }
+    
+    /**
      * Sets the title for this widget.
      * Will be built automagically from some unique value
      * if not present, such as order of attachment to the
@@ -103,7 +142,7 @@ class CompositeWidgetBuilder
         $this->parts['title'] = (string) $title;
         return $this;
     }
-    
+
     /**
      * Sets a unique identifier for this widget
      * Will be built automagically out of the title if not
