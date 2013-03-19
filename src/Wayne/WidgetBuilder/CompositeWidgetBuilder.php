@@ -38,6 +38,18 @@ class CompositeWidgetBuilder
     }
 
     /**
+     * Renders the contents of this Widget and returns a string.
+     * @return string
+     */
+    public function render()
+    {
+        $app = $this->parentToolbar->getApp();
+        return $app['view']->make('wayne::widget.composite', array(
+            'widget' => $this
+        ));
+    }
+
+    /**
      * Retrieves a value, by key, from this widget's meta-data
      * array. $default if the key does not exist, or is empty.
      * @param  string $key

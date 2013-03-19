@@ -7,6 +7,7 @@
 
 use Wayne\WidgetBuilder\CompositeWidgetBuilder;
 use Illuminate\Foundation\Application;
+use Illuminate\View\Environment;
 use Symfony\Component\HttpFoundation\Response;
 
 class Toolbar
@@ -37,7 +38,7 @@ class Toolbar
      */
     public function widget()
     {
-        return $this->app['wayne.widget_builder']($this);
+        return new $this->app['wayne.widget_builder']($this);
     }
 
     /**
@@ -63,7 +64,19 @@ class Toolbar
      */
     protected function render()
     {
-        return $this->app['view']->make('wayne::toolbar');
+        return $this->app['view']->make('wayne::toolbar', array(
+            'widgets' => $this->widgets
+        ));
+    }
+
+    /**
+     * Returns Application associated with this Toolbar.
+     * @api
+     * @return Illuminate\Foundation\Application
+     */
+    public function getApp()
+    {
+        return $this->app;
     }
 
     /**

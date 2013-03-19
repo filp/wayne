@@ -29,11 +29,11 @@
 
 .wayne-widget {
   height: 52px;
+  float: left;
+  display: block;
 }
 
 .wayne-branding {
-  display: block;
-  float: left;
   padding: 18px 10px;
   
   font-size: 14px;
