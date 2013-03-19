@@ -6,16 +6,50 @@
   bottom: 0;
   left:   0;
   width: 100%;
-  height: 64px;
+  height: 52px;
   
-  background: #2f3030;
   color: #F1F1F1;
+  border-top: 1px solid rgba(0, 0, 0, .1);
+  background: #2f3030;
+  background-image: linear-gradient(bottom, rgb(41,41,41) 0%, rgb(47,48,48) 100%);
+  background-image: -o-linear-gradient(bottom, rgb(41,41,41) 0%, rgb(47,48,48) 100%);
+  background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 0%, rgb(47,48,48) 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(41,41,41)),
+    color-stop(1, rgb(47,48,48))
+  );
 }
+
 .wayne-toolbar a {
   text-decoration: none;
 }
-.wayne-branding {
-  font-weight: bold;
-  color: #1C1C1C;
+
+.wayne-widget {
+  height: 52px;
 }
+
+.wayne-branding {
+  display: block;
+  float: left;
+  padding: 18px 10px;
+  
+  font-size: 14px;
+  font-weight: bold;
+  
+  color: #121212;
+  background: #292929;
+  
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .1);
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+  .wayne-branding:hover {
+    color: white;
+    text-shadow: none;
+  }
+
 </style>
