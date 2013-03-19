@@ -61,13 +61,16 @@ class CompositeWidgetBuilder
     /**
      * Retrieves a value, by key, from this widget's contents.
      * @param  string $key
-     * @return mixed|null Null if doesn't exist
+     * @param  mixed  $default
+     * @return mixed
      */
-    public function part($key)
+    public function part($key, $default = null)
     {
         if($this->hasPart($key)) {
             return $this->parts[$key];
         }
+
+        return $default;
     }
 
     /**
