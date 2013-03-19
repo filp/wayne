@@ -1,4 +1,5 @@
 {{-- template used by the CompositeWidgetBuilder --}}
+@section('widget')
 <div class="wayne-widget" title="{{ $widget->part('title') }}" style="{{ $widget->part('style') }}">
   <div class="wayne-widget-body">  
 
@@ -19,3 +20,4 @@
 
   </div>
 </div>
+@show
