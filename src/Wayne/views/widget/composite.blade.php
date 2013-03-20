@@ -2,7 +2,7 @@
 <div class="wayne-widget" title="{{ $widget->part('title') }}" style="{{ $widget->part('style') }}">
   <div class="wayne-widget-body">  
 
-  {{-- Render buttons/badgets defined for this widget --}}
+  {{-- Render buttons/badges defined for this widget --}}
   @if($widget->hasPart('buttons'))
     @foreach($widget->part('buttons') as $button)
       @if(!empty($button->href))
@@ -19,8 +19,15 @@
     @endforeach
   @endif
 
+  @if($widget->hasPart('links'))
+    @foreach($widget->part('links') as $link)
+      <a class="wayne-link" href="{{ $link->href }}" target="{{ $link->target }}">{{ $link->text }}</a>
+    @endforeach
+  @endif
+
+
   @if($widget->hasPart('text'))
-  <span class="wayne-text">{{ $widget->part('text') }}</span>
+    <span class="wayne-text">{{ $widget->part('text') }}</span>
   @endif
   
   </div>
