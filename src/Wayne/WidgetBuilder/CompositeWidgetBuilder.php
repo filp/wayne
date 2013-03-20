@@ -215,6 +215,22 @@ class CompositeWidgetBuilder
     }
 
     /**
+     * Adds a badge to the widget, which looks like a button,
+     * but isn't clickable. Can be used to highlight important
+     * values or some such. It's really just a button.
+     *
+     * @api
+     * @param  string $label 
+     * @param  string $color   A CSS color for the button
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuilder
+     */
+    public function badge($label, $color = null)
+    {
+        $this->button($label, null, $color);
+        return $this;
+    }
+
+    /**
      * Sets the plain-text content for this widget.
      * @api
      * @param string $text
