@@ -3,19 +3,21 @@
   <div class="wayne-widget-body">  
 
   {{-- Render buttons/badgets defined for this widget --}}
-  @foreach($widget->part('buttons') as $button)
-    @if(!empty($button->href))
-    {{-- Does it have an href property? It's a clickable thing! --}}
-    <a class="wayne-button" href="{{ $button->href }}" target="{{ $button->target }}" {{ $button->color ? "style=\"background: {$button->color}\"" : ''}}>
-      {{ $button->label }}<!--
-    --></a>
-    @else
-    {{-- Does it NOT have an href property? It's a stinkin' badge! --}}
-    <span class="wayne-button" {{ $button->color ? "style=\"background: {$button->color}\"" : ''}}>
-      {{ $button->label }}<!--
-    --></span>
-    @endif
-  @endforeach
+  @if($widget->hasPart('buttons'))
+    @foreach($widget->part('buttons') as $button)
+      @if(!empty($button->href))
+      {{-- Does it have an href property? It's a clickable thing! --}}
+      <a class="wayne-button" href="{{ $button->href }}" target="{{ $button->target }}" {{ $button->color ? "style=\"background: {$button->color}\"" : ''}}>
+        {{ $button->label }}<!--
+      --></a>
+      @else
+      {{-- Does it NOT have an href property? It's a stinkin' badge! --}}
+      <span class="wayne-button" {{ $button->color ? "style=\"background: {$button->color}\"" : ''}}>
+        {{ $button->label }}<!--
+      --></span>
+      @endif
+    @endforeach
+  @endif
 
   @if($widget->hasPart('text'))
   <span class="wayne-text">{{ $widget->part('text') }}</span>

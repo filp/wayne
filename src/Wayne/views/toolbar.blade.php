@@ -7,9 +7,9 @@
     <div class="wayne-logo wayne-widget">
       <a href="https://github.com/filp/wayne" class="wayne-branding wayne-widget-body" target="_blank">w</a>
     </div>
+
     @foreach($widgets as $widget)
       {{ $widget->render() }}
     @endforeach
   </div>
-
 </div>

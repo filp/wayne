@@ -24,8 +24,7 @@ class CompositeWidgetBuilder
      * @var array
      */
     protected $parts = array(
-        'template' => 'wayne::widget.composite',
-        'buttons'  => array()
+        'template' => 'wayne::widget.composite'
     );
 
     /**
