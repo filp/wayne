@@ -49,11 +49,7 @@ class WayneServiceProvider extends ServiceProvider
         // it's shipped off to the user agent, but only if we're
         // not dealing with an AJAX request.
         $app->after(function(Request $request, Response $response) use($app) {
-
-            // Seems a bit round-about, eh? Symfony..Request also has 
-            // isXmlHttpRequest, but for the sake of future-proofness,
-            // I'm going to opt to use the app's request.
-            if(!$app['request']->ajax()) {
+            if(!$request->ajax()) {
                 $app['wayne']->attachToResponseBody($response);
             }
         });
