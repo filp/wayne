@@ -70,4 +70,13 @@
   box-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   margin-right: 4px;
 }
+
+.wayne-link {
+  color: #2FB9A6;
+  font-weight: bold;
+  margin-right: 3px;
+}
+  .wayne-link:hover {
+    color: #E1E1E1;
+  }
 </style>

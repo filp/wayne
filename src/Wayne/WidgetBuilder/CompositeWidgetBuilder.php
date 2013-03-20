@@ -24,7 +24,9 @@ class CompositeWidgetBuilder
      * @var array
      */
     protected $parts = array(
-        'template' => 'wayne::widget.composite'
+        'template' => 'wayne::widget.composite',
+        'buttons'  => array(),
+        'links'    => array()
     );
 
     /**
@@ -207,6 +209,26 @@ class CompositeWidgetBuilder
             'label'  => $label,
             'href'   => $link,
             'color'  => $color,
+            'target' => $target
+        );
+
+        return $this;
+    }
+
+    /**
+     * Adds a link to the widget
+     *
+     * @api
+     * @param  string $text
+     * @param  string $link  
+     * @param  string $target i.e: _self, _blank
+     * @return Wayne\WidgetBuilder\CompositeWidgetBuilder
+     */
+    public function link($text, $link = '', $target = '_self')
+    {
+        $this->parts['links'][] = (object) array(
+            'text'   => $text, 
+            'href'   => $link,
             'target' => $target
         );
 
