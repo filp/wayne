@@ -34,6 +34,8 @@
   float: left;
   color: #E1E1E1;
   text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  border-right: 1px solid rgba(0, 0, 0, .1);
+  border-left: 1px solid rgba(255, 255, 255, .07);
 }
   .wayne-widget-body {
     display: block;
@@ -56,7 +58,8 @@
 }
   .wayne-branding:hover {
     color: #D2D2D2;
-    text-shadow: none;
+    text-shadow
+: none;
   }
 
 {{-- wayne components: --}}
