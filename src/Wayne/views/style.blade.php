@@ -58,8 +58,7 @@
 }
   .wayne-branding:hover {
     color: #D2D2D2;
-    text-shadow
-: none;
+    text-shadow: none;
   }
 
 {{-- wayne components: --}}
